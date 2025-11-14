@@ -1,0 +1,1 @@
+export const defaultUserRole = 'simple'; // change to 'simple' for viewer-only

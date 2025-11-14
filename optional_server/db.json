@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "titre": "React",
+      "image": "https://via.placeholder.com/150",
+      "description": "Bibliothèque JS pour UI"
+    }
+  ],
+
+  "competences": [
+    {"id": 1, "libelle": "React", "niveau": "Avancé", "image": "https://via.placeholder.com/150", "description": "Développement d'applications avec React"},
+    {"id": 2, "libelle": "Tailwind CSS", "niveau": "Intermédiaire", "image": "https://via.placeholder.com/150", "description": "Stylisation avec Tailwind"}
+  ],
+  "projets": [
+    {"id": 1, "titre": "Portfolio ESMT", "description": "Mini-projet scolaire.", "image": "https://via.placeholder.com/300x200", "lien": "", "techno": ["React","Tailwind"]}
+  ],
+  "users": [
+    {"id":1, "username":"admin", "password":"admin123", "role":"admin"},
+    {"id":2, "username":"user", "password":"user123", "role":"simple"}
+  ]
+
+}
