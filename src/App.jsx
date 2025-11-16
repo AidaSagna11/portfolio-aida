@@ -5,6 +5,7 @@ import FormPage from './pages/FormPage'
 import DetailsPage from './pages/DetailsPage'
 import LoginPage from './pages/LoginPage'
 import ProtectedRoute from './components/ProtectedRoute'
+import profilImg from './assets/profil.jpeg';
 
 const API = 'http://localhost:4000'
 
@@ -68,14 +69,37 @@ export default function App(){
   )
 }
 
-function Home(){
+function Home() {
   return (
-    <div className="text-center">
-      <h1 className="text-3xl font-bold mb-4">Bienvenue sur mon portfolio</h1>
-      <p>Exemple d'application React + Tailwind. Voir la liste des compétences et projets.</p>
+    <div className="flex flex-col md:flex-row items-center gap-8 bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto mt-8">
+      {/* Photo de profil */}
+      <div className="flex-shrink-0">
+        <img
+          src={profilImg} // ici l'image locale
+          alt="Profil"
+          className="w-48 h-48 object-cover rounded-full shadow-lg"
+        />
+      </div>
+
+      {/* Description */}
+      <div className="text-center md:text-left max-w-xl">
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">Bonjour, je suis Aida Maimouna SARR</h1>
+        <p className="text-gray-600 mb-4">
+          Développeuse passionnée et curieuse, spécialisée en React et Tailwind CSS.
+          Découvrez mes compétences et projets réalisés dans le cadre de mes études et expériences.
+        </p>
+        <Link
+          to="/list"
+          className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow transition"
+        >
+          Voir mes projets
+        </Link>
+      </div>
     </div>
   )
 }
+
+
 
 function NotFound(){
   return <div>404 - Page non trouvée</div>

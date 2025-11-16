@@ -7,8 +7,9 @@ Application React + Tailwind permettant d'ajouter, modifier, supprimer et consul
 
 ## Lancer
 1. `npm install`
-2. `npm run dev`
-3. Ouvrir `http://localhost:5173`
+2. `npm run server`
+3. `npm run dev`
+4. Ouvrir `http://localhost:5173`
 
 ## Contenu
 - src/: composants et code source
