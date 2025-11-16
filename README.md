@@ -14,8 +14,7 @@ Application React + Tailwind permettant d'ajouter, modifier, supprimer et consul
 ## Contenu
 - src/: composants et code source
 - optional_server/: serveur factice (json-server)
-- presentation_for_pdf.txt : contenu à mettre dans le PDF de rendu
-- video_script.txt : script pour la vidéo de 5 minutes
+
 
 ## Auteurs
 Maimouna SARR
