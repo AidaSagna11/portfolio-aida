@@ -27,43 +27,59 @@ export default function App(){
 
   return (
     <AuthContext.Provider value={{user,setUser}}>
-      <div className="min-h-screen bg-gray-50">
-        <header className="bg-white shadow">
-          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <Link to="/" className="text-xl font-bold">Mon Portfolio</Link>
-            <nav className="flex gap-4 items-center">
-              <Link to="/" className="hover:underline">Accueil</Link>
-              <Link to="/list" className="hover:underline">Compétences & Projets</Link>
+      <div className="h-screen grid grid-rows-[auto_1fr_auto] bg-gray-950 text-white">
+        <header className="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-md shadow z-50">
+          <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+            <Link to="/" className="text-xl font-bold text-white">Mon Portfolio</Link>
+
+            <nav className="flex gap-6 items-center text-gray-300">
+              <Link to="/" className="hover:text-white transition">Accueil</Link>
+              <Link to="/list" className="hover:text-white transition">Compétences & Projets</Link>
+
               {user ? (
                 <>
-                  {user.role === 'admin' && <Link to="/add" className="btn">Ajouter</Link>}
-                  <button onClick={logout} className="text-sm text-red-600">Se déconnecter</button>
+                  {user.role === "admin" && (
+                    <Link to="/add" className="hover:text-white transition">Ajouter</Link>
+                  )}
+                  <button onClick={logout} className="text-red-400 hover:text-red-600 transition">
+                    Se déconnecter
+                  </button>
                 </>
               ) : (
-                <Link to="/login" className="text-sm">Se connecter</Link>
+                <Link to="/login" className="hover:text-white transition">Se connecter</Link>
               )}
             </nav>
           </div>
         </header>
 
-        <main className="container mx-auto px-4 py-8">
+
+        <main className="pt-20">
           <Routes>
-            <Route path="/" element={<Home/>} />
+            <Route path="/" element={<Home />} />
             <Route path="/list" element={<ListPage api={API} />} />
             <Route path="/details/:type/:id" element={<DetailsPage api={API} />} />
-
             <Route path="/login" element={<LoginPage api={API} />} />
 
-            <Route path="/add" element={<ProtectedRoute allowedRoles={["admin"]}><FormPage api={API} /></ProtectedRoute>} />
-            <Route path="/edit/:type/:id" element={<ProtectedRoute allowedRoles={["admin"]}><FormPage api={API} /></ProtectedRoute>} />
+            <Route 
+              path="/add"
+              element={<ProtectedRoute allowedRoles={["admin"]}><FormPage api={API} /></ProtectedRoute>}
+            />
 
-            <Route path="*" element={<NotFound/>} />
+            <Route 
+              path="/edit/:type/:id"
+              element={<ProtectedRoute allowedRoles={["admin"]}><FormPage api={API} /></ProtectedRoute>}
+            />
+
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 
-        <footer className="bg-white border-t mt-12">
-          <div className="container mx-auto px-4 py-6 text-center text-sm text-gray-500">© 2025 - Portfolio</div>
+        <footer className="bg-gray-900/90 backdrop-blur-md border-t border-gray-800">
+          <div className="container mx-auto px-4 py-4 text-center text-sm text-gray-400">
+            © 2025 - Portfolio
+          </div>
         </footer>
+
       </div>
     </AuthContext.Provider>
   )
@@ -71,33 +87,34 @@ export default function App(){
 
 function Home() {
   return (
-    <div className="flex flex-col md:flex-row items-center gap-8 bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto mt-8">
-      {/* Photo de profil */}
-      <div className="flex-shrink-0">
+    <div className="w-full h-full flex items-center bg-gray-950 text-white">
+
+      {/* Image à gauche */}
+      <div className="hidden md:block w-1/2 h-full">
         <img
-          src={profilImg} // ici l'image locale
+          src={profilImg}
           alt="Profil"
-          className="w-48 h-48 object-cover rounded-full shadow-lg"
+          className="w-full h-[75%] object-cover opacity-80"
         />
       </div>
 
-      {/* Description */}
-      <div className="text-center md:text-left max-w-xl">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Bonjour, je suis Aida Maimouna SARR</h1>
-        <p className="text-gray-600 mb-4">
-          Développeuse passionnée et curieuse, spécialisée en React et Tailwind CSS.
-          Découvrez mes compétences et projets réalisés dans le cadre de mes études et expériences.
+      {/* Texte à droite */}
+      <div className="w-full md:w-1/2 px-8 md:px-16">
+        <h1 className="text-6xl font-bold mb-4">
+          My <span className="text-blue-400">Portfolio</span>
+        </h1>
+
+        <p className="text-gray-300 max-w-md">
+          Étudiante en ingénierie des systèmes d’information, passionnée par le
+          développement, la data et la création d’interfaces modernes.
         </p>
-        <Link
-          to="/list"
-          className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow transition"
-        >
-          Voir mes projets
-        </Link>
       </div>
+
     </div>
-  )
+  );
 }
+
+
 
 
 
